@@ -1,0 +1,91 @@
+Table maquina {
+  id_maquina int [pk, increment]
+  nombre varchar(20) [not null, unique]
+}
+
+Table turno {
+  id_turno int [pk, increment]
+  descripcion varchar(40) [not null, unique]
+  hora_inicio time [not null]
+  hora_fin time [not null]
+}
+
+Table persona {
+  id_persona int [pk, increment]
+  codigo varchar(10) [not null, unique]
+  nombre varchar(100) [not null]
+  rol varchar(30) [not null, note: 'operaria o personal de mantenimiento']
+}
+
+Table referencia {
+  id_referencia int [pk, increment]
+  producto varchar(80) [not null]
+  volumen_cc int
+  num_colores int
+  indexes {
+    (producto, volumen_cc, num_colores) [unique]
+  }
+}
+
+Table area_impacto {
+  id_area int [pk, increment]
+  nombre varchar(40) [not null, unique]
+}
+
+Table codigo_paro {
+  num_codigo int [pk]
+  descripcion varchar(150) [not null]
+  id_area int [not null]
+}
+
+Table subcodigo {
+  id_subcodigo int [pk, increment]
+  num_codigo int [not null]
+  codigo_texto varchar(10) [not null]
+  descripcion varchar(150) [not null]
+  indexes {
+    (num_codigo, codigo_texto) [unique]
+  }
+}
+
+Table tipo_paro {
+  id_tipo_paro int [pk, increment]
+  nombre varchar(60) [not null, unique]
+}
+
+Table registro_produccion {
+  id_registro int [pk, increment]
+  fecha date [not null]
+  id_maquina int [not null]
+  id_turno int
+  id_operaria int
+  id_referencia int
+  pacas_producidas int
+  horas_trabajadas decimal(4,2)
+  horas_no_trabajadas decimal(4,2)
+  id_tipo_paro int
+  observacion_paro text
+  observaciones text
+}
+
+Table paro {
+  id_paro int [pk, increment]
+  id_registro int [not null]
+  num_codigo int [not null]
+  minutos int [not null]
+  id_subcodigo int
+  area_involucrada varchar(30)
+  id_persona_involucrada int
+}
+
+Ref: codigo_paro.id_area > area_impacto.id_area [delete: restrict, update: cascade]
+Ref: subcodigo.num_codigo > codigo_paro.num_codigo [delete: restrict, update: cascade]
+Ref: registro_produccion.id_maquina > maquina.id_maquina [delete: restrict, update: cascade]
+Ref: registro_produccion.id_turno > turno.id_turno [delete: restrict, update: cascade]
+Ref: registro_produccion.id_operaria > persona.id_persona [delete: restrict, update: cascade]
+Ref: registro_produccion.id_referencia > referencia.id_referencia [delete: restrict, update: cascade]
+Ref: registro_produccion.id_tipo_paro > tipo_paro.id_tipo_paro [delete: restrict, update: cascade]
+Ref: paro.id_registro > registro_produccion.id_registro [delete: cascade, update: cascade]
+Ref: paro.num_codigo > codigo_paro.num_codigo [delete: restrict, update: cascade]
+Ref: paro.id_subcodigo > subcodigo.id_subcodigo [delete: restrict, update: cascade]
+Ref: paro.id_persona_involucrada > persona.id_persona [delete: restrict, update: cascade]
