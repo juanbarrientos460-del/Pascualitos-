@@ -1,0 +1,21 @@
+# Datos fuente y exportaciones con información personal
+*.xlsm
+*.xlsx
+*.xls
+*.csv
+!data/plantilla_migracion.csv
+
+# Archivos locales de DBeaver y PostgreSQL
+.metadata/
+.project
+.settings/
+*.db
+*.sqlite
+*.backup
+*.dump
+
+# Temporales y sistema operativo
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
