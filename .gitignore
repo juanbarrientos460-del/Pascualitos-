@@ -5,6 +5,13 @@
 *.csv
 !data/plantilla_migracion.csv
 
+# Credenciales y configuración local
+.env
+.env.*
+.dbeaver/
+data-sources*.json
+credentials-config.json
+
 # Archivos locales de DBeaver y PostgreSQL
 .metadata/
 .project
@@ -13,6 +20,12 @@
 *.sqlite
 *.backup
 *.dump
+*.bak
+
+# Python (si usan script de migración)
+__pycache__/
+*.py[cod]
+.venv/
 
 # Temporales y sistema operativo
 *.log
