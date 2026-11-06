@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1050" viewBox="0 0 1500 1050">
+<rect width="1500" height="1050" fill="#fff"/>
+<text x="750" y="48" text-anchor="middle" font-family="Arial" font-size="28" font-weight="bold" fill="#17324d">MODELO ENTIDAD–RELACIÓN CONCEPTUAL | PASCUALITOS</text>
+<style>
+.box{fill:#fff;stroke:#34495e;stroke-width:2}.head{fill:#285f89}.name{font:bold 18px Arial;fill:#fff}.attr{font:16px Arial;fill:#202b36}.rel{stroke:#526579;stroke-width:2;fill:none}.lab{font:14px Arial;fill:#263746}.small{font:12px Arial;fill:#526579}
+</style>
+<!-- relaciones -->
+<path class="rel" d="M300 190 H480 V400 H570"/><text class="lab" x="385" y="180">1:N · máquina parcial / registro total</text>
+<path class="rel" d="M300 390 H510 V440 H570"/><text class="lab" x="380" y="380">1:N · turno parcial / registro total</text>
+<path class="rel" d="M300 650 H500 V490 H570"/><text class="lab" x="370" y="640">1:N · referencia parcial / registro total</text>
+<path class="rel" d="M300 850 H520 V540 H570"/><text class="lab" x="370" y="840">N:M · persona parcial / registro total</text>
+<path class="rel" d="M900 455 H1090"/><text class="lab" x="940" y="440">1:N · registro parcial / paro total</text>
+<path class="rel" d="M900 510 H1010 V730 H1090"/><text class="lab" x="925" y="700">1:N · código parcial / paro total</text>
+<path class="rel" d="M900 760 H1040 V790 H1090"/><text class="lab" x="925" y="780">0..1:N · subcódigo parcial / paro parcial</text>
+<path class="rel" d="M300 850 H1000 V850 H1090"/><text class="lab" x="670" y="875">0..1:N · persona parcial / paro parcial</text>
+<path class="rel" d="M300 970 H420 V730 H570"/><text class="lab" x="340" y="960">1:N · área parcial / código total</text>
+<path class="rel" d="M900 730 H1000 V760 H1090"/><text class="lab" x="930" y="745">1:N · código parcial / subcódigo total</text>
+<path class="rel" d="M300 390 H470 V600 H570"/><text class="lab" x="360" y="585">0..1:N · tipo y registro parciales</text>
+<path class="rel" d="M750 820 V900 H900 V820"/><text class="lab" x="755" y="925">1:N recursiva · ambos parciales</text>
+<!-- entidades izquierda -->
+<g transform="translate(60 120)"><rect class="box" width="240" height="115"/><rect class="head" width="240" height="34"/><text class="name" x="12" y="24">MAQUINA</text><text class="attr" x="12" y="62">maquina_id</text><text class="attr" x="12" y="91">nombre</text></g>
+<g transform="translate(60 320)"><rect class="box" width="240" height="145"/><rect class="head" width="240" height="34"/><text class="name" x="12" y="24">TURNO</text><text class="attr" x="12" y="62">turno_id</text><text class="attr" x="12" y="91">descripcion</text><text class="attr" x="12" y="120">hora_inicio · hora_fin</text></g>
+<g transform="translate(60 580)"><rect class="box" width="240" height="145"/><rect class="head" width="240" height="34"/><text class="name" x="12" y="24">REFERENCIA</text><text class="attr" x="12" y="62">referencia_id</text><text class="attr" x="12" y="91">producto · volumen_cc</text><text class="attr" x="12" y="120">num_colores</text></g>
+<g transform="translate(60 790)"><rect class="box" width="240" height="145"/><rect class="head" width="240" height="34"/><text class="name" x="12" y="24">PERSONA</text><text class="attr" x="12" y="62">persona_id</text><text class="attr" x="12" y="91">codigo_anonimo</text><text class="attr" x="12" y="120">rol</text></g>
+<!-- centro -->
+<g transform="translate(570 350)"><rect class="box" width="330" height="220"/><rect class="head" width="330" height="38"/><text class="name" x="12" y="26">REGISTRO_PRODUCCION</text><text class="attr" x="14" y="72">registro_id · fecha</text><text class="attr" x="14" y="105">horas_trabajadas</text><text class="attr" x="14" y="138">meta_por_hora</text><text class="attr" x="14" y="171">pacas_producidas</text></g>
+<g transform="translate(570 650)"><rect class="box" width="330" height="145"/><rect class="head" width="330" height="34"/><text class="name" x="12" y="24">CODIGO_PARO</text><text class="attr" x="12" y="62">codigo</text><text class="attr" x="12" y="91">descripcion</text></g>
+<g transform="translate(570 850)"><rect class="box" width="330" height="115"/><rect class="head" width="330" height="34"/><text class="name" x="12" y="24">AREA_IMPACTO</text><text class="attr" x="12" y="62">area_id</text><text class="attr" x="12" y="91">nombre</text></g>
+<!-- derecha -->
+<g transform="translate(1090 360)"><rect class="box" width="300" height="145"/><rect class="head" width="300" height="34"/><text class="name" x="12" y="24">PARO</text><text class="attr" x="12" y="62">paro_id · minutos</text><text class="attr" x="12" y="91">observacion</text></g>
+<g transform="translate(1090 650)"><rect class="box" width="300" height="145"/><rect class="head" width="300" height="34"/><text class="name" x="12" y="24">SUBCODIGO_PARO</text><text class="attr" x="12" y="62">subcodigo_id · clave</text><text class="attr" x="12" y="91">descripcion</text></g>
+<g transform="translate(1090 850)"><rect class="box" width="300" height="115"/><rect class="head" width="300" height="34"/><text class="name" x="12" y="24">TIPO_PARO</text><text class="attr" x="12" y="62">tipo_paro_id</text><text class="attr" x="12" y="91">nombre</text></g>
+<text class="small" x="750" y="1025" text-anchor="middle">MER conceptual: atributos y relaciones; las llaves foráneas se incorporan en el modelo lógico.</text>
+</svg>
